@@ -14,7 +14,7 @@ export class Book {
   id: number;
 
   @Column({ length: '30' })
-  @Field()
+  @Field({ description: 'aaa' })
   title: string;
 
   @Column()

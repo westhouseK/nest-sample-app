@@ -4,15 +4,13 @@
   "port": 5432,
   "username": "postgres",
   "database": "db",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["src/entities/*.ts"],
   "synchronize": true,
   "logging": true,
-  "logger": "file",
   "cache": false,
   "cli": {
-      "entitiesDir": "server/entities",
-      "migrationsDir": "server/migrations"
+      "entitiesDir": "src/entities"
   },
-  "seeds": ["src/**/*{.ts,.js}"],
-  "factories": ["src/**/*{.ts,.js}"]
+  "seeds": ["src/seeds/*.seed.ts"],
+  "factories": ["src/factories/*.factory.ts"]
 }

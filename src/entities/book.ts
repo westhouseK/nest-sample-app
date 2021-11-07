@@ -13,7 +13,7 @@ export class Book {
   @Field((type) => ID)
   id: number;
 
-  @Column({ length: '30' })
+  @Column({ length: '50' })
   @Field({ description: 'aaa' })
   title: string;
 

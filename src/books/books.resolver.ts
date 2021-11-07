@@ -1,10 +1,12 @@
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Book } from '../entities/book';
 import { BooksService } from './books.service';
 import { NewBookInput } from '../dto/newBook.input';
+import { bookGuard } from 'src/guard/book.guard';
 
 @Resolver((of) => Book)
+@UseGuards(bookGuard)
 export class BooksResolver {
   constructor(private booksService: BooksService) {}
 

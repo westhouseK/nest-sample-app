@@ -4,7 +4,7 @@ import { Max, MaxLength, Min } from 'class-validator';
 @InputType()
 export class NewBookInput {
   @Field()
-  @MaxLength(30)
+  @MaxLength(50)
   title: string;
 
   @Field((type) => Int)

@@ -18,7 +18,7 @@ export class Book {
   title: string;
 
   @Column()
-  @Field((type) => [String])
+  @Field((type) => String)
   author: string;
 
   @Column({ type: 'int', unsigned: true })

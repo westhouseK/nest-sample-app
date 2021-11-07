@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "database": "db",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true,
+  "logging": true,
+  "logger": "file",
+  "cache": false,
+  "cli": {
+      "entitiesDir": "server/entities",
+      "migrationsDir": "server/migrations"
+  },
+  "seeds": ["src/**/*{.ts,.js}"],
+  "factories": ["src/**/*{.ts,.js}"]
+}

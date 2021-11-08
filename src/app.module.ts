@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BooksModule } from './books/books.module';
 import { Book } from './entities/book';
+import { BookDetail } from './entities/bookDetail';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { Book } from './entities/book';
       port: 5432,
       username: 'postgres',
       database: 'db',
-      entities: [Book], // パスで指定できないか調査する
+      entities: [Book, BookDetail], // パスで指定できないか調査する
       synchronize: true,
       logging: true,
       cache: false,

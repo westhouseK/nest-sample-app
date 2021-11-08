@@ -4,7 +4,9 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import { BookDetail } from './bookDetail';
 
 @Entity()
 @ObjectType()
@@ -24,6 +26,12 @@ export class Book {
   @Column({ type: 'int', unsigned: true })
   @Field((type) => Int)
   price: number;
+
+  @OneToMany((type) => BookDetail, (bookDetail) => bookDetail.bookId, {
+    lazy: true,
+  })
+  @Field((type) => [BookDetail])
+  BookDetail: BookDetail[];
 
   @CreateDateColumn()
   @Field()

@@ -10,12 +10,12 @@ import { bookGuard } from 'src/guard/book.guard';
 export class BooksResolver {
   constructor(private booksService: BooksService) {}
 
-  @Query((returns) => [Book])
-  books(): Promise<Book[]> {
+  @Query(() => [Book])
+  async getBooks(): Promise<Book[]> {
     return this.booksService.findAll();
   }
 
-  @Query((returns) => Book)
+  @Query(() => Book)
   async getBook(@Args({ name: 'id', type: () => Int }) id: number) {
     const book = await this.booksService.findOneById(id);
     console.log(book);
@@ -24,6 +24,15 @@ export class BooksResolver {
     }
     return book;
   }
+
+  // クエリビルダのテスト用
+  @Query(() => Book)
+  async getBookByQuery(@Args({ name: 'id', type: () => Int }) id: number) {
+    return await this.booksService.findByQuery(id);
+  }
+
+  // 1:nを実現するためには、resolverを書かないといけない？
+  // async BookDetail()
 
   @Mutation((returns) => Book)
   addBook(@Args('newBook') newBook: NewBookInput): Promise<Book> {

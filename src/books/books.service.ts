@@ -19,6 +19,16 @@ export class BooksService {
     return this.booksRepostiory.findOne(id);
   }
 
+  findByQuery(id: number): Promise<Book> {
+    const table = this.booksRepostiory.metadata.propertiesMap;
+    const a = this.booksRepostiory.metadata.createPropertiesMap();
+    console.log(a.id);
+    return this.booksRepostiory
+      .createQueryBuilder()
+      .where(`${table.id} = :${table.id}`, { id })
+      .getOne();
+  }
+
   async create(data: NewBookInput): Promise<Book> {
     const book = this.booksRepostiory.create(data);
     await this.booksRepostiory.save(book);

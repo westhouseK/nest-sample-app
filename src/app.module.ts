@@ -16,10 +16,11 @@ import { BookDetail } from './entities/bookDetail';
     // TODO: ormconfigにまとめたい
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'db',
       port: 5432,
-      username: 'postgres',
-      database: 'db',
+      username: 'admin',
+      database: 'admin',
+      password: 'admin',
       entities: [Book, BookDetail], // パスで指定できないか調査する
       synchronize: true,
       logging: true,

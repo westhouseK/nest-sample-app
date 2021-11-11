@@ -16,7 +16,10 @@ export class BooksService {
   }
 
   findOneById(id: number): Promise<Book> {
-    return this.booksRepostiory.findOne(id);
+    return this.booksRepostiory.findOne({
+      relations: ['bookDetail'],
+      where: { id },
+    });
   }
 
   findByQuery(id: number): Promise<Book> {

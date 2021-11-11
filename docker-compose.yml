@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  backend:
+    container_name: backend
+    image: backend
+    build: ./web
+    tty: true
+    restart: always
+    expose:
+      - 3000
+      - 9229
+    ports:
+      - 3000:3000
+      - 9229:9229
+    volumes:
+      - type: bind
+        source: .
+        target: /backend
+    depends_on:
+      - db
+    networks:
+      - net
+  db:
+    container_name: db
+    image: db
+    build: ./db
+    ports:
+      - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: admin
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      DATABASE_HOST: localhost
+    tty: true
+    networks:
+      - net
+volumes: 
+  dbdata:
+
+networks:
+  net:
+    external: true

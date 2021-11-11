@@ -27,7 +27,7 @@ export class Book {
   @Field((type) => Int)
   price: number;
 
-  @OneToMany((type) => BookDetail, (bookDetail) => bookDetail.bookId, {
+  @OneToMany((type) => BookDetail, (bookDetail) => bookDetail.book, {
     lazy: true,
   })
   @Field((type) => [BookDetail])

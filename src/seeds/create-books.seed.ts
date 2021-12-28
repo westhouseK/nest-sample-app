@@ -6,7 +6,7 @@ import { Book } from '../entities/book';
 export default class CreateBooks implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     console.log('createBook');
-    // await factory(Book)().createMany(10);
+    await factory(Book)().createMany(3);
     await factory(BookDetail)().createMany(1);
   }
 }

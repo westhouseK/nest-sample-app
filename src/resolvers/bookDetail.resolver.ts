@@ -1,6 +1,6 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { BookDetail } from 'src/entities/bookDetail';
-import { BookDetailService } from './bookDetail.service';
+import { BookDetailService } from '../services/bookDetail.service';
 
 @Resolver(() => BookDetail)
 export class BookDetailResolver {

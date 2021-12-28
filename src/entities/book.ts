@@ -5,32 +5,37 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   OneToMany,
+  OneToOne,
+  JoinColumn,
+  BaseEntity,
 } from 'typeorm';
+import { Author } from './author';
 import { BookDetail } from './bookDetail';
 
 @Entity()
 @ObjectType()
-export class Book {
+export class Book extends BaseEntity {
   @PrimaryGeneratedColumn()
-  @Field((type) => ID)
+  @Field(() => ID)
   id: number;
 
   @Column({ length: '50' })
   @Field({ description: 'aaa' })
   title: string;
 
-  @Column()
-  @Field((type) => String)
-  author: string;
-
   @Column({ type: 'int', unsigned: true })
-  @Field((type) => Int)
+  @Field(() => Int)
   price: number;
 
-  @OneToMany((type) => BookDetail, (bookDetail) => bookDetail.book, {
+  @OneToOne(() => Author, ({ book }) => book)
+  @JoinColumn()
+  @Field(() => Author)
+  author: Author;
+
+  @OneToMany(() => BookDetail, (bookDetail) => bookDetail.book, {
     lazy: true,
   })
-  @Field((type) => [BookDetail])
+  @Field(() => [BookDetail])
   BookDetail: BookDetail[];
 
   @CreateDateColumn()

@@ -3,24 +3,24 @@ import {
   BaseEntity,
   Column,
   Entity,
-  ManyToOne,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Book } from './book';
 
-@Entity()
+@Entity('Author')
 @ObjectType()
-export class BookDetail extends BaseEntity {
+export class Author extends BaseEntity {
   @PrimaryGeneratedColumn()
   @Field(() => ID)
   id: number;
 
-  @Column({ type: 'text' })
+  @Column({ length: 50 })
   @Field(() => String)
-  detail: string;
+  name: string;
 
-  @ManyToOne(() => Book, (book) => book.BookDetail, {
-    lazy: true,
-  })
+  @OneToOne(() => Book, ({ author }) => author)
+  @JoinColumn()
   book: Book;
 }

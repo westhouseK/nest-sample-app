@@ -2,13 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Author {
+  id: ID!
+  name: String!
+}
+
 type Book {
   id: ID!
 
   """aaa"""
   title: String!
-  author: String!
   price: Int!
+  author: Author!
   BookDetail: [BookDetail!]!
   createdAt: DateTime!
 }
@@ -20,24 +25,16 @@ scalar DateTime
 
 type BookDetail {
   id: ID!
-  bookId: ID!
   detail: String!
 }
 
 type Query {
-  getBooks: [Book!]!
   getBook(id: Int!): Book!
+  getBooks: [Book!]!
   getBookByQuery(id: Int!): Book!
   BookDetail: [BookDetail!]!
 }
 
 type Mutation {
-  addBook(newBook: NewBookInput!): Book!
   removeBook(id: Int!): Boolean!
-}
-
-input NewBookInput {
-  title: String!
-  price: Int!
-  author: [String!]!
 }

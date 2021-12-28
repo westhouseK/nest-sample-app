@@ -11,6 +11,20 @@
           "remoteRoot": "/backend",
           "protocol": "inspector",
           "runtimeExecutable": "yarn",
+      },
+      {
+        "name": "Debug Jest Tests",
+        "type": "node",
+        "request": "launch",
+        "address": "localhost",
+        "runtimeArgs": [
+          "--inspect=0.0.0.0:9230",
+          "${workspaceRoot}/app/node_modules/.bin/jest",
+          "--runInBand"
+        ],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "port": 9230
       }
   ]
 }

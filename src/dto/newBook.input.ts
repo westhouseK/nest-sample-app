@@ -7,11 +7,8 @@ export class NewBookInput {
   @MaxLength(50)
   title: string;
 
-  @Field((type) => Int)
+  @Field(() => Int)
   @Min(0)
   @Max(9999)
   price: number;
-
-  @Field((type) => [String])
-  author: string;
 }

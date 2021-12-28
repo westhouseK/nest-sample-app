@@ -7,9 +7,6 @@ services:
     build: ./web
     tty: true
     restart: always
-    expose:
-      - 3000
-      - 9229
     ports:
       - 3000:3000
       - 9229:9229
@@ -33,7 +30,8 @@ services:
       POSTGRES_DB: admin
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      DATABASE_HOST: localhost
+      DATABASE_HOST: admin
+      TZ: Asia/Tokyo
     tty: true
     networks:
       - net

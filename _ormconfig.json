@@ -5,6 +5,7 @@
   "username": "admin",
   "database": "admin",
   "entities": ["src/entities/*.ts"],
+  "autoLoadEntities": true,
   "synchronize": true,
   "logging": true,
   "cache": false,

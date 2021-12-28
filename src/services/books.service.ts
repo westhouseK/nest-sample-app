@@ -32,11 +32,11 @@ export class BooksService {
       .getOne();
   }
 
-  async create(data: NewBookInput): Promise<Book> {
-    const book = this.booksRepostiory.create(data);
-    await this.booksRepostiory.save(book);
-    return book;
-  }
+  // async create(data: NewBookInput): Promise<Book> {
+  //   const book = this.booksRepostiory.create(data);
+  //   await this.booksRepostiory.save(book);
+  //   return book;
+  // }
 
   async remove(id: number): Promise<boolean> {
     const result = await this.booksRepostiory.delete(id);
